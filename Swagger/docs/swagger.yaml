@@ -1,0 +1,57 @@
+basePath: /api/v1
+host: localhost:1323
+info:
+  contact:
+    email: support@swagger.io
+    name: API Support
+    url: http://www.swagger.io/support
+  description: API
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: http://swagger.io/terms/
+  title: API測試
+  version: "1.0"
+paths:
+  /user:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: 使用者資料
+        in: body
+        name: username
+        required: true
+        schema:
+          type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 成功回傳
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: 格式不對
+          schema:
+            type: string
+        "404":
+          description: 找不到
+          schema:
+            type: string
+        "500":
+          description: 資料庫錯誤
+          schema:
+            type: string
+      summary: 取得資料
+      tags:
+      - User
+schemes:
+- http
+securityDefinitions:
+  Bearer:
+    in: header
+    name: Authorization
+    type: apiKey
+swagger: "2.0"
